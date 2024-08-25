@@ -13,7 +13,7 @@ clean:
 	rm -rf ./bin/*
 	rm -rf ./protocol/proto/*
 	rm -rf ./gate/client_proto/client_proto_gen.go
-	rm -rf ./gs/api/*.pb.go && rm -rf ./node/api/*.pb.go
+	rm -rf ./gs/gsapi/*.pb.go && rm -rf ./node/api/*.pb.go
 
 # 构建服务器二进制文件
 .PHONY: build
@@ -46,6 +46,7 @@ docker_config:
 	mkdir -p ./docker/multi/bin && cp -rf ./cmd/multi/* ./docker/multi/bin/ && rm -rf ./docker/multi/bin/*.go
 	mkdir -p ./docker/gs/bin && cp -rf ./cmd/gs/* ./docker/gs/bin/ && rm -rf ./docker/gs/bin/*.go
 	mkdir -p ./docker/gm/bin && cp -rf ./cmd/gm/* ./docker/gm/bin/ && rm -rf ./docker/gm/bin/*.go
+	mkdir -p ./docker/robot/bin && cp -rf ./cmd/robot/* ./docker/robot/bin/ && rm -rf ./docker/robot/bin/*.go
 
 # 构建镜像
 .PHONY: docker_build
@@ -73,10 +74,10 @@ dev_tool:
 .PHONY: gen_natsrpc
 gen_natsrpc:
 	protoc \
-	--proto_path=gs/api \
-	--go_out=paths=source_relative:gs/api \
-	--natsrpc_out=paths=source_relative:gs/api \
-	gs/api/*.proto
+	--proto_path=gs/gsapi \
+	--go_out=paths=source_relative:gs/gsapi \
+	--natsrpc_out=paths=source_relative:gs/gsapi \
+	gs/gsapi/*.proto
 	protoc \
 	--proto_path=node/api \
 	--go_out=paths=source_relative:node/api \

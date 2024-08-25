@@ -2,7 +2,7 @@ package rpc
 
 import (
 	"hk4e/common/config"
-	gsapi "hk4e/gs/api"
+	gsapi "hk4e/gs/gsapi"
 	nodeapi "hk4e/node/api"
 
 	"github.com/byebyebruce/natsrpc"

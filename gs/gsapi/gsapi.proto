@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package gs.api;
+package gs.gsapi;
 
-option go_package = "hk4e/gs/api;api";
+option go_package = "hk4e/gs/api;gsapi";
 
 // GM 服务
 service GM {

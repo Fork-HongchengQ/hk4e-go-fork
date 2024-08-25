@@ -5,7 +5,7 @@ import (
 
 	"hk4e/common/mq"
 	"hk4e/common/rpc"
-	"hk4e/gs/api"
+	"hk4e/gs/gsapi"
 	"hk4e/pkg/logger"
 
 	"github.com/gin-gonic/gin"
@@ -50,7 +50,7 @@ func (c *Controller) gmCmd(ctx *gin.Context) {
 			c.gmClientMap[gmCmdReq.GsId] = gmClient
 			c.gmClientMapLock.Unlock()
 		}
-		rsp, err := gmClient.Cmd(ctx.Request.Context(), &api.CmdRequest{
+		rsp, err := gmClient.Cmd(ctx.Request.Context(), &gsapi.CmdRequest{
 			FuncName:  gmCmdReq.FuncName,
 			ParamList: gmCmdReq.ParamList,
 		})

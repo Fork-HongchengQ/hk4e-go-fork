@@ -1,7 +1,7 @@
 package service
 
 import (
-	"hk4e/gs/api"
+	"hk4e/gs/gsapi"
 
 	"github.com/byebyebruce/natsrpc"
 	"github.com/nats-io/nats.go"
@@ -20,7 +20,7 @@ func NewService(conn *nats.Conn, gsId uint32) (*Service, error) {
 		return nil, err
 	}
 	gs := &GMService{}
-	_, err = api.RegisterGMNATSRPCServer(svr, gs, natsrpc.WithServiceID(gsId))
+	_, err = gsapi.RegisterGMNATSRPCServer(svr, gs, natsrpc.WithServiceID(gsId))
 	if err != nil {
 		return nil, err
 	}
